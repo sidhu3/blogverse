@@ -1,0 +1,23 @@
+# Ignore virtual environment
+env/
+
+# Ignore compiled Python files
+*.pyc
+_pycache_/
+
+# Ignore instance folder (contains configs, secrets, or SQLite DB)
+instance/
+
+# Ignore database migrations (optional)
+migrations/
+
+# Ignore Selenium test reports (if not needed)
+selenium_tests/
+selenium_tests/
+
+# Ignore VS Code settings
+.vscode/
+
+# Ignore system files (Mac & Windows)
+.DS_Store
+Thumbs.db

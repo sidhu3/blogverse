@@ -1,0 +1,30 @@
+{% extends 'home.html'%}
+
+{% block bodyblock %}
+
+    <center>
+        
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <h3 class="text-center">Write your Post here!</h3>
+        <form id="blog-form" action="" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title"  required>
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="author" name="author"  required >
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Content</label>
+                <!-- <input type="password" class="form-control" id="password" name="password" required> -->
+                <textarea class="form-control" name="content" id="" rows="4" placeholder=""></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Add Post</button>
+        </form>
+    </div>
+</div>
+    </center>
+    
+{% endblock %}

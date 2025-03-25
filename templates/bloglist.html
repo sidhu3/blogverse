@@ -1,0 +1,155 @@
+{% extends 'home.html'%}
+
+{% block bodyblock %}
+
+    <style>
+        /* Container for the grid */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Default to 3 columns */
+            gap: 20px;
+            padding: 20px;
+        }
+    
+        /* Section Style with Flexbox */
+        .section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Ensures button is at the bottom */
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* Make the section take full height */
+        }
+    
+        /* Hover effect on section */
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+    
+        /* Title style */
+        .title {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #333;
+        }
+    
+        /* Content Style */
+        .content {
+            font-size: 1em;
+            color: #555;
+            margin-bottom: 10px;
+            flex-grow: 1; /* Allows content to take remaining space */
+        }
+    
+        /* Author and Date */
+        .author, .pub-date {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 5px;
+        }
+    
+        /* Button Style */
+        .btn {
+            padding: 8px 15px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: auto; /* Ensures button is at the bottom */
+        }
+    
+        .btn-warning {
+            background-color: #f0ad4e;
+            color: white;
+        }
+    
+        .btn-warning:hover {
+            background-color: #ec971f;
+        }
+    
+        /* Make the grid responsive: */
+        @media (max-width: 1024px) {
+            .container {
+                grid-template-columns: repeat(2, 1fr); /* 2 columns on medium screens */
+            }
+        }
+    
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr; /* 1 column on small screens */
+            }
+        }
+    
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.2em; /* Reduce font size on very small screens */
+            }
+    
+            .content {
+                font-size: 0.9em; /* Reduce font size on very small screens */
+            }
+    
+            .section {
+                padding: 15px; /* Reduce padding on small screens */
+            }
+        }
+
+    </style>
+    
+    <h3 style="text-align: center;">See your post here!</h3>
+
+    <div class="container">
+        {% for b in blogs.items %}
+        <div class="section">
+            <div class="title">
+                {{ b.title }}
+            </div>
+            <div class="author">
+                <strong>Author</strong>: {{ b.author }}
+            </div>
+            <div class="pub-date">
+                Published Date: {{ b.pub_date }}
+            </div>
+            <div class="content">
+                {{ b.content | truncate(150) }}  <!-- Truncate the content to 150 characters for preview -->
+            </div>
+            <a href="/detail/{{ b.id }}" class="btn btn-warning">Show More...</a>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="text-center">
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if blogs.has_prev %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ blogs.prev_num }}{% if query %}&query={{ query }}{% endif %}">Previous</a>
+                </li>
+                {% endif %}
+    
+                {% for page_num in range(1, blogs.pages + 1) %}
+                <li class="page-item {% if page_num == blogs.page %}active{% endif %}">
+                    <a class="page-link" href="?page={{ page_num }}{% if query %}&query={{ query }}{% endif %}">{{ page_num }}</a>
+                </li>
+                {% endfor %}
+    
+                {% if blogs.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ blogs.next_num }}{% if query %}&query={{ query }}{% endif %}">Next</a>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    
+        
+    
+    
+{% endblock %}
