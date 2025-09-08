@@ -115,15 +115,6 @@ Go to: **http://127.0.0.1:5000/**
 
 ---
 
-## 📸 Screenshots (Optional)
-Add screenshots here:
-- Home Page
-- Blog List
-- Blog Detail (with Sentiment + Summary)
-- Plots
-
----
-
 ## 👨‍💻 Author 
 Siddhu
 
