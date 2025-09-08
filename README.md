@@ -55,8 +55,8 @@ The project also integrates authentication, data export, and visualization.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/your-username/blog-flask-app.git
-cd blog-flask-app
+git clone https://github.com/yoursidhu3/blogverse.git
+cd blogverse
 ```
 
 ### 2. Create a virtual environment
@@ -124,11 +124,10 @@ Add screenshots here:
 
 ---
 
-## 👨‍💻 Author
-**Your Name**  
+## 👨‍💻 Author 
 Siddhu
 
 ---
 
 ## 📜 License
-This project is licensed under the MIT License - feel free to use & modify!
+This project is for educational purposes only (college project).
